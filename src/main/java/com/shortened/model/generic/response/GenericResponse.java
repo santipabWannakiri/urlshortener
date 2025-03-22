@@ -10,6 +10,30 @@ public class GenericResponse {
     private String appMessageCode;
     private String description;
 
+    public String getAppResponseCode() {
+        return appResponseCode;
+    }
+
+    public void setAppResponseCode(String appResponseCode) {
+        this.appResponseCode = appResponseCode;
+    }
+
+    public String getAppMessageCode() {
+        return appMessageCode;
+    }
+
+    public void setAppMessageCode(String appMessageCode) {
+        this.appMessageCode = appMessageCode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public GenericResponse() {
     }
     public GenericResponse(String appResponseCode, String appMessageCode, String description) {
