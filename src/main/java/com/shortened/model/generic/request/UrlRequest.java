@@ -8,7 +8,7 @@ import lombok.Data;
 public class UrlRequest {
 
     @NotBlank(message = "is mandatory")
-    @Size(min = 10, max = 200, message = "originalURL must be between 10 and 200 characters")
+    @Size(min = 5, max = 200, message = " must be between 10 and 200 characters")
     private String url;
 
 
