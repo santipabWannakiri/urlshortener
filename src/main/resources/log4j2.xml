@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
+        <Properties>
+            <Property name="logFile">${sys:logging.file.name:-artifacts/application.log}</Property>
+        </Properties>
         <!-- Console Appender -->
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
         </Console>
 
         <!-- File Appender -->
-        <File name="File" fileName="artifacts/application.log" append="false">
+        <File name="File" fileName="${logFile}" append="false">
             <PatternLayout>
                 <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
             </PatternLayout>
