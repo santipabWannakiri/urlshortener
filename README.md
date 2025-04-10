@@ -30,3 +30,23 @@
  ```
 3. Create log4j2.xml
 
+## GlobalException Handler for Spring boot Validation
+ ```java
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<GenericResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        GenericResponse errorJsonResponse = new GenericResponse();
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+
+        // Combine all validation messages into one string (optional)
+        String validationErrors = ex.getBindingResult().getFieldErrors()
+                .stream()
+                .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
+                .collect(Collectors.joining("; "));
+
+        errorJsonResponse.setAppResponseCode(MessageConstants.INVALID_FORMAT_ERROR_CODE);
+        errorJsonResponse.setAppMessageCode(MessageConstants.INVALID_FORMAT_MESSAGE_CODE);
+        errorJsonResponse.setDescription(validationErrors);
+
+        return new ResponseEntity<>(errorJsonResponse, httpStatus);
+    }
+ ```
