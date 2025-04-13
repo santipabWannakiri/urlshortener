@@ -50,3 +50,37 @@
         return new ResponseEntity<>(errorJsonResponse, httpStatus);
     }
  ```
+
+## Redis cache
+
+### Steps to Configure Redis in Spring Boot:
+
+1. **Add Redis dependency** in `pom.xml` or `build.gradle`.
+   
+2. **Configure Redis connection** in `application.properties` or `application.yml`.
+
+3. **Enable caching** with `@EnableCaching`.
+
+4. **(Optional)** Define `RedisTemplate` for custom operations.
+
+5. Use `@Cacheable`, `@CachePut`, `@CacheEvict` in your services for caching.
+
+6. **(Optional)** Set up TTL or custom cache configurations via `CacheManager`.
+
+7. Test Redis functionality through `redis-cli` or logs.
+ ```cli
+docker exec -it redis redis-cli -a mysecretpassword
+127.0.0.1:6379> PING
+127.0.0.1:6379> GET users:1
+127.0.0.1:6379> TTL users:1  //Test Time-to-Live (TTL) in Redis
+
+ ```
+
+
+Cache strategies 
+| Annotation    | Strategy           | When used                          |
+|---------------|--------------------|-------------------------------------|
+| `@Cacheable`  | **Read-through**   | Read once and reuse from cache      |
+| `@CachePut`   | **Write-through**  | Always update cache with new data   |
+| `@CacheEvict` | **Eviction**       | Clear outdated cache after changes  |
+
