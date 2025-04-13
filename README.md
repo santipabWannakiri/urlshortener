@@ -74,6 +74,12 @@ docker exec -it redis redis-cli -a mysecretpassword
 127.0.0.1:6379> GET users:1
 127.0.0.1:6379> TTL users:1  //Test Time-to-Live (TTL) in Redis
 
+KEYS *
+KEYS shortened_urls:*
+GET shortened_urls:abc123
+EXISTS shortened_urls:abc123
+TTL shortened_urls:abc123
+TYPE shortened_urls:abc123
  ```
 
 
