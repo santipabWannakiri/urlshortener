@@ -182,4 +182,15 @@ Once Prometheus and Grafana are up and running:
 ### 📊 Import a Prebuilt Dashboard
 1. Go to **Dashboards → New → import →  URL or ID dashboard → Load**
 2. Search Spring boot dashboard at **https://grafana.com/grafana/dashboards/**
-3. Choose data source and import 
+3. Choose data source and import
+
+📊 Example: Custom Dashboard for HTTP Status Code Count
+1. Go to **⚙️Dashboard → Edit → Add → Visualization**
+2. Select data soruce
+3. Select metrics **http_server_requests_seconds_count**
+4. Label filters : **status**
+5. Test **Run queries**
+6. Chage label for easy view click **Options**
+7. Legend : **custom** → provide **{{status}}**
+8. Test **Run queries**
+9. Save dashboard
