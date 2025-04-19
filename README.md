@@ -90,3 +90,49 @@ Cache strategies
 | `@CachePut`   | **Write-through**  | Always update cache with new data   |
 | `@CacheEvict` | **Eviction**       | Clear outdated cache after changes  |
 
+
+## Prometheus & Grafana
+1. **Add actuator and  micrometer-registry-prometheus dependency** in `pom.xml`
+2. **Configure endpoint connection** in `application.properties` 
+ ```cli
+management.endpoints.web.exposure.include=prometheus,health,info
+management.endpoint.prometheus.enabled=true
+management.metrics.export.prometheus.enabled=true
+ ```
+3. **Create Docker Compose for Prometheus & Grafana**
+```cli
+version: '3'
+
+services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+volumes:
+  grafana-storage:
+
+```
+
+3. **Prometheus Config (prometheus.yml)**
+```cli
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'springboot-app'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']  # Use localhost or IP for Linux
+
+```
+
