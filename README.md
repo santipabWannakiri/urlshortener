@@ -136,6 +136,19 @@ scrape_configs:
 
 ```
 
+## 🔍 Useful Endpoints (Spring Boot Actuator)
+
+These endpoints are exposed via Spring Boot Actuator and are used for monitoring and Prometheus scraping:
+
+| Endpoint                        | Description                              | Example URL                              |
+|---------------------------------|------------------------------------------|-------------------------------------------|
+| `/actuator/health`             | Basic health check of the app            | http://localhost:8080/actuator/health     |
+| `/actuator/info`               | Custom build/application info            | http://localhost:8080/actuator/info       |
+| `/actuator/prometheus`         | Prometheus metrics scrape endpoint       | http://localhost:8080/actuator/prometheus |
+| `/actuator`                    | Shows available actuator endpoints       | http://localhost:8080/actuator            |
+
+> ℹ️ These endpoints must be enabled in `application.properties`:
+
 ### 🔍 Access Prometheus UI
 
 - Open in browser:  
