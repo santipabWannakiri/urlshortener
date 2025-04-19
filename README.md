@@ -194,3 +194,6 @@ Once Prometheus and Grafana are up and running:
 7. Legend : **custom** → provide **{{status}}**
 8. Test **Run queries**
 9. Save dashboard
+
+🔔 Grafana Alert Example: Too Many HTTP 500 Errors
+1. Go to **Alering → Alert rules → New alert rule → Define query and alert condition**
