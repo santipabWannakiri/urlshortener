@@ -136,3 +136,32 @@ scrape_configs:
 
 ```
 
+### 🔍 Access Prometheus UI
+
+- Open in browser:  
+  **http://localhost:9090**
+
+  
+## 📈 Grafana Setup & Dashboard Import
+
+Once Prometheus and Grafana are up and running:
+
+### 🧭 Access Grafana
+
+- Open Grafana in your browser:  
+  **http://localhost:3000**
+
+- Default login credentials:  
+  - **Username:** `admin`  
+  - **Password:** `admin`  
+  *(You will be prompted to change the password on first login)*
+
+---
+
+### 🔌 Add Prometheus as a Data Source
+
+1. Go to **⚙️ Settings → Data Sources**
+2. Click **"Add data source"**
+3. Choose **Prometheus**
+4. Set the URL: **http://host.docker.internal:9090**
+5. Click **"Save & Test"**
