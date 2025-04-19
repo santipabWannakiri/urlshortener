@@ -173,8 +173,13 @@ Once Prometheus and Grafana are up and running:
 
 ### 🔌 Add Prometheus as a Data Source
 
-1. Go to **⚙️ Settings → Data Sources**
+1. Go to **⚙️Data Sources**
 2. Click **"Add data source"**
 3. Choose **Prometheus**
 4. Set the URL: **http://host.docker.internal:9090**
 5. Click **"Save & Test"**
+
+### 📊 Import a Prebuilt Dashboard
+1. Go to **Dashboards → New → import →  URL or ID dashboard → Load**
+2. Search Spring boot dashboard at **https://grafana.com/grafana/dashboards/**
+3. Choose data source and import 
